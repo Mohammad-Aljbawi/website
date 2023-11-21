@@ -31,33 +31,39 @@ const ArtikelCard: React.FC<BlogsProps> = ({ blogs }) => {
           <div className="border border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div>
               {/* title */}
-              <div className="text-gray-900 font-bold text-xl mb-2">
+              <div className="text-gray-900 font-bold text-2xl mb-5 text-center">
                 {blog.title}
               </div>
               {/* nur erste 100 Char anzeigen  */}
-              <p className="text-gray-700 text-base">
+              <p className="text-gray-700 text-base font-bold">
                 {showFullArticle === blog.id
                   ? blog.body
                   : `${blog.body.slice(0, 100)}...`}
               </p>
-              {/* unteres teil */}
+              
             </div>
-            <div className="mb-2 flex items-center mt-8">
-              <div className="text-sm">
+            {/* unteres Teil */} 
+            <div className="mb-0 flex items-center mt-8">
+              <div className="text-sm font-bold">
                 <p className="text-gray-900 leading-none">
-                  Written By :{blog.author}
+                  <p className="font-bold"> Written By :</p>
+                  <p className="font-semibold">{blog.author}</p>
                 </p>
                 {/* automatisch aktuelles Datum */}
-                <p className="text-gray-600">
-                  {blog.date.toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                  })}{" "}
+                <p className="text-gray-900">
+                  <p className="font-bold"> Published:</p>
+                  <p className="font-semibold">
+                    {blog.date.toLocaleDateString("DE", {
+                      day: "numeric",
+                      month: "numeric",
+                      year: "numeric",
+                    })}
+                  </p>
                 </p>
                 {/* ende */}
               </div>
               <button
-                className="ml-auto bg-green-500 text-white p-4 shadow-md rounded-full hover:shadow-2xl)"
+                className="ml-auto mb-0 bg-green-500 text-white p-3 shadow-md rounded-full hover:shadow-2xl)"
                 onClick={() => toggleFullArticle(blog.id)}
               >
                 Read More
